@@ -1,0 +1,45 @@
+
+<!--  -->
+<!-- ИМЕНА переманных каторые связанны с ngModel должны во всх формах быть уникальны  -->
+<!--  -->
+<div class="border">
+    <h3>ngModel for Form</h3>
+    <div class="form-group">
+        <label>Название модели</label>
+        <input type="text" class="form-control" name='title' [(ngModel)]='phone.title' #phoneTitle='ngModel'
+            (change)='onTitleChange()' (ngModelChange)='onTitleChange()' />
+        <!-- (ngModelChange)='onTitleChange()' срабатывает динамически при каждом вводе символа -->
+        <!-- (change)='onTitleChange()' срабатывает только когда выходим из области ввода -->
+    </div>
+    <div class="form-group">
+        <label for="">Цена</label>
+        <input type="text" class="form-control" name='price' [(ngModel)]='phone.price' #phonePrice='ngModel'
+            (ngModelChange)='onPriceChange()'>
+    </div>
+    <div class="form-group">
+        <label for="">Производитель</label>
+        <select class="form-control" name="company" [(ngModel)]='phone.company' #phoneCompany='ngModel'>
+            <option *ngFor='let comp of companies;' [value]="comp">
+                {{comp}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+
+        <button class="btn btn-danger mr-3" (click)='addPhone2(phoneTitle, phonePrice, phoneCompany)'>
+                addPhone2(...)</button>
+        <button class="btn btn-danger" (click)='addPhone()'>
+                addPhone()</button>
+    </div>
+    <div>
+        <h3>Добавленные Телефоны</h3>
+        <p>{{phoneTitle.name}} : {{phoneTitle.model}}</p>
+        <p>{{phonePrice.name}} : {{phonePrice.model}}</p>
+        <p>{{phoneCompany.name}} : {{phoneCompany.model}}</p>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor='let p of phones'>{{p.title}} ({{p.company}}) - {{p.price}}</li>
+        </ul>
+    </div>
+</div>

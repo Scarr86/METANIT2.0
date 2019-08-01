@@ -1,0 +1,35 @@
+<h1>Параметры маршрута</h1>
+<div class="row align-items-center">
+    <div class="col-6 ">
+        <ul>
+            <li routerLinkActive="active">
+                <a [routerLink]="['/chapter7/item','5']" [queryParams]="{'product':'phone', 'price':'200'}">Модель 5</a>
+            </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="['/chapter7/item','8']" [queryParams]="{'product':'tablet'}">Модель 8</a>
+            </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="['/chapter7', 'item', '8', 'stat']">Stat Model 8</a>
+            </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="['/chapter7/item','5', 'details']">Details Model 5</a>
+            </li>
+        </ul>
+        <div class="form-group">
+            <label>Id</label>
+            <input type="text" [(ngModel)]="item.id" class="form-control" placeholder="Номер модели" /><br />
+            <label>Price</label>
+            <input type="number" [(ngModel)]="item.price" class="form-control" placeholder="Цена" /><br />
+            <label>Product</label>
+            <input [(ngModel)]="item.product" class="form-control" placeholder="Товар" /><br />
+
+        </div>
+    </div>
+    <div class="col-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<h3>Программная навигация</h3>
+<button (click)="goToItem(item)" class="btn btn-info mb-3 d-block">Перейти</button>
+<button (click)="goToItem(item, 'stat')" class="btn btn-info mb-3 d-block">Перейти к Статистики</button>
+<button (click)="goToItem(item, 'details')" class="btn btn-info mb-3 d-block">Перейти к Деталям</button>

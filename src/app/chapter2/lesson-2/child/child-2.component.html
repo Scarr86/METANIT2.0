@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<h2>Привет {{nameChild}} из child-comp !</h2>
+<h2> Имя nameChild :   
+    <input [ngModel]="nameChild" (ngModelChange)="onNameChildCh($event)" />
+</h2>
+
+<p>Имя пользователя: {{userName}}</p>
+<p>Возраст пользователя: {{userAge}}</p>
+<p>ID <input type="number" [ngModel]="usrId" (ngModelChange)="onIdCh($event)"/> </p>
+
+<p>Count
+    <button (click)="change(true)">+</button>
+    <button (click)="change(false)">-</button>
+</p>

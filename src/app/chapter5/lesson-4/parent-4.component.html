@@ -1,0 +1,52 @@
+<div class="border">
+    <!--Reactive Forms  -->
+    <h3>Reactive Forms</h3>
+    <form [formGroup]="myFormGroup" (ngSubmit)='ReactiveFormSubmit()'>
+        <div class="form-group">
+            <label for=""> Name </label>
+            <input formControlName="userName" class="form-control" />
+
+            <div class="alert alert-danger"
+                *ngIf="myFormGroup.controls['userName'].invalid && myFormGroup.controls['userName'].touched">
+                Не указано имя
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Email</label>
+            <input formControlName="userEmail" class="form-control" />
+
+            <div class="alert alert-danger"
+                *ngIf='myFormGroup.controls["userEmail"].invalid && myFormGroup.controls["userEmail"].touched '>
+                Некорректный email
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Phone</label>
+            <input formControlName="userPhone" class="form-control" />
+
+            <div class="alert alert-danger"
+                *ngIf="myFormGroup.controls['userPhone'].invalid && myFormGroup.controls['userPhone'].touched">
+                Некорректный номер телефона
+            </div>
+        </div>
+
+        <div formArrayName='userPhones'>
+            <div class="form-group" *ngFor='let phone of myFormGroup.controls["userPhones"].controls;let i = index'>
+                <label for="">Phones</label>
+                <input formControlName="{{i}}" class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <button type="button" class="mr-3 btn btn-primary" (click)='addUserPhone()'>addPhones</button>
+
+            <button class="mr-3 btn btn-primary" [disabled]='myFormGroup.invalid' type="submit">ADD</button>
+
+            <button class="btn btn-primary" type="reset">Reset</button>
+
+        </div>
+    </form>
+</div>

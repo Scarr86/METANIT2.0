@@ -1,0 +1,13 @@
+:host {
+    font-family: Verdana;
+    color: #555;
+    font-size:13px;
+}
+
+header, footer{
+    min-height: 130px;
+}
+
+.active a{
+    color: tomato;
+}

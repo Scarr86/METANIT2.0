@@ -1,0 +1,25 @@
+<h1> Lesson 2 </h1>
+<h4>Взаимодействие между компонентами</h4>
+<h4>Привязка к сеттеру</h4>
+<div class="d-inline-block border m-3 ">
+    <!-- Родительски компонент -->
+    <p> <strong>Родительски компонент</strong> </p>
+    name Child: <strong> {{nameChild}}</strong><br>
+    name <input type="text" [(ngModel)]="name"> <br>
+    age <input type="number" [(ngModel)]="age"> <br>
+    id <input type="number" [(ngModel)]="id"> <br>
+
+    <p>Count click: {{clicks}}</p>
+</div>
+
+<div class="d-inline-block border">
+    <!-- Встроенный компонент -->
+    <app-child-2 [userName]="name" [userAge]='age' (nameChildChange)="nameChild=$event" [(usrId)]="id"
+        (onChBtn)="onChanged($event)">
+
+        <!-- ng-content -->
+        <p> <strong>Встроенный компонент</strong> </p>
+        <h2>Добро пожаловать {{name}}</h2>
+
+        </app-child-2>
+</div>
