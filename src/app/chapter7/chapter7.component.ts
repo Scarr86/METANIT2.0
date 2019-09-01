@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LogService } from '../log.service';
 import { ActivatedRoute, Router } from '@angular/router';
 export class Item {
@@ -12,7 +12,7 @@ export class Item {
   templateUrl: './chapter7.component.html',
   styleUrls: ['./chapter7.component.css']
 })
-export class Chapter7Component implements OnInit {
+export class Chapter7Component implements OnInit, OnDestroy {
 
   item: Item = new Item();
 
@@ -21,31 +21,29 @@ export class Chapter7Component implements OnInit {
     logService.write(this.constructor.toString().match(/\w+/g)[1] + " Load", 'h1');
   }
 
+  ngOnDestroy() {
+    console.log("Destroy Chapter7Component");
+  }
+
   ngOnInit() {
     this.item.id = 1;
 
   }
   goToItem(item: Item, option?: string) {
-    console.log('chapter7', this.router.url);
-    if (typeof item.id !== 'undefined')
-      if (option === undefined)
-        this.router.navigate(
-          ["/chapter7","item", item.id],
-          {
-            queryParams: {
-              'product': item.product,
-              'price': item.price
-            }
-          })
-      else
-        this.router.navigate(
-          ["/chapter7/item", item.id, option],
-          {
-            queryParams: {
-              'product': item.product,
-              'price': item.price
-            }
-          })
+
+    let comands: Array<any> = [];
+    comands.push("/chapter7/item");
+    comands.push(item.id.toString());
+    if (option) comands.push(option);
+
+    this.router.navigate(
+      comands,
+      {
+        queryParams: {
+          'product': item.product,
+          'price': item.price
+        }
+      });
 
   }
 
