@@ -19,11 +19,11 @@ import { Chapter3Component } from './chapter3/chapter3.component';
 import { Chapter4Component } from './chapter4/chapter4.component';
 import { Chapter5Component } from './ch5-Forms/chapter5.component';
 import { Chapter6Component } from './chapter6/chapter6.component';
-import { Chapter7Component } from './chapter7/chapter7.component';
+import { Chapter7Component } from './chapter7-navigation/chapter7.component';
 import { ExampleUsersComp } from './ExampleModule/ExampleUsers/example-users.comp';
-import { ItemComponent } from './chapter7/lesson-1/item.component';
-import { ItemStatComponent } from './chapter7/lesson-2/ItemStat/item.stat.component';
-import { ItemDetailsComponent } from './chapter7/lesson-2/ItemDetails/item.details.component';
+import { ItemComponent } from './chapter7-navigation/lesson-1/item.component';
+import { ItemStatComponent } from './chapter7-navigation/lesson-2/ItemStat/item.stat.component';
+import { ItemDetailsComponent } from './chapter7-navigation/lesson-2/ItemDetails/item.details.component';
 // определение дочерних маршрутов для урока
 const itemRoutes = [
   { path: 'stat', component: ItemStatComponent },

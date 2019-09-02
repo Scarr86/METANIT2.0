@@ -18,7 +18,7 @@ import { Chapter5Module } from './ch5-Forms/chapter5.module';
 
 import { Chapter6Module } from './chapter6/chapter6.module';
 
-import { Chapter7Module } from './chapter7/chapter7.module';
+import { Chapter7Module } from './chapter7-navigation/chapter7.module';
 
 import { ExampleModule } from './ExampleModule/example.module';
 

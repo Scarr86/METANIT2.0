@@ -29,7 +29,11 @@ export class ItemComponent implements OnInit {
     //или так
     // this.id = activeRoute.snapshot.params["id"];//Не обновляется динамически
     //или так
-     this.subscription = this.activeRoute.params.subscribe(params=> this.item.id = params["id"]);
+     this.subscription = this.activeRoute.params.subscribe(params=>{
+      console.log(params);
+      
+     this.item.id = params["id"]
+    });
     //или так
     // this.activeRoute.paramMap
     //   .pipe(
