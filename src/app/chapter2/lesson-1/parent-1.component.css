@@ -10,3 +10,27 @@ div.wrapper {
 .radius{
     border-radius: 50%;
 }
+.dash{
+    width: 300px;
+    height: 300px;
+    border: 1px solid gray;
+    position: relative;
+    /* text-align:  center; */
+
+}
+.ball{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    /* width: 100px; */
+    /* height: 100px; */
+    border-radius: 50%;
+    background: tomato;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+    transition: all 1s .5s;
+    
+
+}
