@@ -29,17 +29,22 @@ export class ItemComponent implements OnInit {
     //или так
     // this.id = activeRoute.snapshot.params["id"];//Не обновляется динамически
     //или так
-    // this.subscription = activeRoute.params.subscribe(params=> this.id = params["id"]);
+     this.subscription = this.activeRoute.params.subscribe(params=> this.item.id = params["id"]);
     //или так
-    this.activeRoute.paramMap
-      .pipe(
-        switchMap(params => {
-          // console.log(params);
-          // console.log(params.get("id"));
-          return params.get("id");
-        })
-      )
-      .subscribe(data => this.item.id = +data);
+    // this.activeRoute.paramMap
+    //   .pipe(
+    //     switchMap(params => {
+    //       // console.log(params);
+    //       // console.log(params.get("id"));
+    //       alert( params.get("id"));
+    //       return params.get("id");
+    //     })
+    //   )
+    //   .subscribe(data => {
+    //     alert(+data);
+    //     this.item.id = +data
+        
+    //   });
     // Так тоже работает но хз правильно ?
     // map( data => {
     //   console.log(data);

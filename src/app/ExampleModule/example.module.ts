@@ -1,7 +1,7 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule  } from '@angular/forms';
-import { ExampleUsersComp }   from './ExampleUsers/example-users.comp';
+import { FormsModule } from '@angular/forms';
+import { ExampleUsersComp } from './ExampleUsers/example-users.comp';
 
 import { ExampleCardUserComp } from './ExampleUsers/ExampleCardUser/example-card-user.comp'
 import { HoverDirective } from './ExampleUsers/ExampleCardUser/example-hover.directive';
@@ -9,8 +9,8 @@ import { HoverDirective } from './ExampleUsers/ExampleCardUser/example-hover.dir
 import { GoogleDriveComp } from './GoogleDrive/google-drive.comp';
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule],
-    declarations: [ ExampleUsersComp, ExampleCardUserComp, HoverDirective, GoogleDriveComp],
-    exports: [ ExampleUsersComp],       // экспортируем компонент
+    imports: [BrowserModule, FormsModule],
+    declarations: [ExampleUsersComp, ExampleCardUserComp, HoverDirective, GoogleDriveComp],
+    exports: [ExampleUsersComp],       // экспортируем компонент
 })
 export class ExampleModule { }

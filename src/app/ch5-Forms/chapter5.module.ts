@@ -7,6 +7,7 @@ import { Parent1Component } from './lesson-1/parent-1.component';
 import { Parent2Component } from './lesson-2/parent-2.component';
 import { Parent3Component } from './lesson-3/parent-3.component';
 import { Parent4Component } from './lesson-4/parent-4.component';
+import { AppFormControl } from './l5-formControl/formControl.component';
 
 
 
@@ -21,6 +22,7 @@ import { Parent4Component } from './lesson-4/parent-4.component';
     Parent2Component,
     Parent3Component,
     Parent4Component,
+    AppFormControl,
 
 
    ],

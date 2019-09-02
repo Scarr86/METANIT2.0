@@ -10,14 +10,14 @@ import { Chapter3Module } from './chapter3/chapter3.module';
 
 import { Chapter4Module } from './chapter4/chapter4.module';
 
-import { Chapter5Module } from './chapter5/chapter5.module';
+import { Chapter5Module } from './ch5-Forms/chapter5.module';
 
 import { Chapter6Module } from './chapter6/chapter6.module';
 import { Chapter1Component } from './chapter-1/chapter1.component';
 import { Chapter2Component } from './chapter2/chapter2.component';
 import { Chapter3Component } from './chapter3/chapter3.component';
 import { Chapter4Component } from './chapter4/chapter4.component';
-import { Chapter5Component } from './chapter5/chapter5.component';
+import { Chapter5Component } from './ch5-Forms/chapter5.component';
 import { Chapter6Component } from './chapter6/chapter6.component';
 import { Chapter7Component } from './chapter7/chapter7.component';
 import { ExampleUsersComp } from './ExampleModule/ExampleUsers/example-users.comp';
