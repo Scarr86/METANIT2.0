@@ -1,0 +1,22 @@
+{ 
+    "productList":
+    [{
+        "id":0,
+        "name": "Хлеб",
+        "price": 28,
+        "num": 1,
+        "done": false
+    },{
+        "id": 1,
+        "name": "Масло",
+        "price": 45,
+        "num": 2,
+        "done": true
+    },{
+        "id":2,
+        "name": "Конфеты",
+        "price": 32,
+        "num": 4,
+        "done": false
+    }]
+}

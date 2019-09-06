@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Parent2Component implements OnInit {
   clicks: number = 0;
+  name:string = "Den";
+  realAge:number = 0;
   constructor() { }
 
   ngOnInit() {

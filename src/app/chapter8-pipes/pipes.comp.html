@@ -1,0 +1,131 @@
+<h1>
+    Встроенные pipes
+</h1>
+<ul>
+    <li><strong> CurrencyPipe:</strong> форматирует валюту
+        <!-- 
+            {{ value | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }}
+                value: выводимая сумма
+                currencyCode: код валюты согласно спецификации ISO 4217. Если не указан, то по умолчанию применяется USD
+                display: указывает, как отображать символ валюты. Может принимать следующие значения:
+                code: отображает код валюты (например, USD)
+                symbol (значение по умолчанию): отображает символ валюты (например, $)
+                symbol-narrow: некоторые страны используют в качестве символа валюты несколько символов, например, канадский доллар - CA$, данный параметр позволяет получить собственно символ валюты - $
+                string: отображает произвольную строку
+                digitsInfo: формат числа, который применяется в DecimalPipe
+                locale: код используемой локали
+         -->
+        <p> {{myNumber }} </p>
+        <p><i>currency:'RUB':'code'</i>: {{myNumber| currency:'RUB':'code' }} </p>
+        <p><i>currency:'RUB':'symbol-narrow'</i>: {{myNumber| currency:'RUB':'symbol-narrow' }} </p>
+        <p><i>currency:'RUB':'symbol':'1.1-1'</i>: {{myNumber| currency:'RUB':'symbol':'1.1-1' }} </p>
+        <p><i>currency:'RUB':'symbol-narrow':'1.1-1'</i>: {{myNumber| currency:'RUB':'symbol-narrow':'1.1-1' }} </p>
+        <p><i>currency:'RUB':'тока седня по цене '</i>: {{myNumber| currency:'RUB':'тока седня по цене ' }} </p>
+    </li>
+
+    <li><strong> PercentPipe:</strong> форматирует проценты
+        <p> {{myNumber }} </p>
+        <p><i>percent</i>: {{myNumber| percent}} </p>
+
+    </li>
+
+    <li><strong> UpperCasePipe:</strong> переводит строку в верхний регистр
+        <input type="text" class="form-control" [(ngModel)]='welcom'>
+        <p><i>uppercase</i>: {{welcom | uppercase}} </p>
+    </li>
+
+    <li><strong> LowerCasePipe:</strong> переводит строку в нижний регистр
+        <p> {{welcom }} </p>
+        <p><i>lowercase</i>: {{welcom | lowercase}}</p>
+    </li>
+
+    <li><strong> DatePipe:</strong> форматирует дату
+        <p>{{myDate}}</p>
+        <p><i>date</i>: {{myDate| date}}</p>
+        <p><i>date:"dd/MM/yyyy"</i>: {{myDate | date:"dd/MM/yyyy"}}</p>
+        <button class="btn btn-primary " (click)="onClickDate(myDate)">Change date <i>05/09/2019</i></button>
+
+    </li>
+
+    <li><strong> DecimalPipe:</strong> задает формат числа
+        <!-- 
+            {{ value | number [ : digitsInfo [ : locale ] ] }}
+            value: само выводимое значение
+            digitsInfo: строка в формате "minIntegerDigits.minFractionDigits-maxFractionDigits", где
+            minIntegerDigits - минимальное количество цифр в целой части
+            minFractionDigits - минимальное количество цифр в дробной части
+            maxFractionDigits - максимальное количество цифр в дробной части
+            locale: код применяемой культуры
+         -->
+        <p>{{myNumber}}</p>
+        <p><i>number:'3.4-5'</i>: {{ myNumber| number:'3.4-5' }}</p>
+    </li>
+
+    <li><strong> SlicePipe:</strong> обрезает строку
+        <p> {{welcom}}</p>
+        <p> <i>slice:3</i>: {{welcom| slice:3}} </p>
+        <p> <i>slice:6:12</i>: {{welcom| slice:6:12}} </p>
+    </li>
+</ul>
+
+<h4>
+    Цепочка pipes
+</h4>
+<div>
+    <p> {{welcom}} </p>
+    <p> <i> slice:6:11 | uppercase </i>: {{welcom | slice:6:11 | uppercase}} </p>
+</div>
+
+<h1>
+    Создание своих pipes
+</h1>
+<p>
+    <i> Факториал числа {{myNumber}} </i> : {{myNumber| factorial}}
+</p>
+<!--  -->
+<h4>Передача параметров</h4>
+<p>{{arrStr}}</p>
+<p> <i> join </i>: {{arrStr | join}} </p>
+<p> <i> join:1 </i>: {{arrStr | join:1}} </p>
+<p> <i> join:1:3 </i>: {{arrStr | join:1:3}} </p>
+
+<h4>Pure и Impure Pipes</h4>
+<!--  -->
+<form action="" class="form-inline">
+    введите число: <input [(ngModel)]='myNumber' name="myNumber" class="form-control"> <br>
+</form>
+<p> <i> Факториал числа {{myNumber}} </i> : {{myNumber| factorial}}</p>
+<!--  -->
+
+
+<form action="" class="form-inline">
+    <!-- через #myInput получает доступ к переменным, методам в файле ts этого компонента -->
+    Название телефона: <input #myInput class="form-control mr-3" name="arrStr">
+    <button class="btn btn-primary" (click)="arrStr.push(myInput.value)">Add</button>
+</form>
+<p>{{arrStr}}</p>
+<p> <i> join </i>: {{arrStr | join}} </p>
+<p> <i> join:1 </i>: {{arrStr | join:1}} </p>
+<p> <i> join:1:3 </i>: {{arrStr | join:1:3}} </p>
+
+
+<!--  -->
+<h4>AsyncPipe</h4>
+<p> <i> join </i>: {{arrStr | join}} </p>
+<p>
+    Модель : {{obsArrStr | async }}
+</p>
+<p>
+    <button class="btn btn-primary" (click)="showArrStr()"> showArrStr() </button>
+</p>
+
+<h4>Пример использования асинхронного pipe при загрузке</h4>
+
+<button class="btn btn-primary" (click)="showUsers()">Show Users in users.json</button>
+
+<ul>
+    <li *ngFor="let user of users | async  ">
+        <p>name: {{user.name}}</p>
+        <p>age: {{user.age}}</p>
+    </li>
+</ul>

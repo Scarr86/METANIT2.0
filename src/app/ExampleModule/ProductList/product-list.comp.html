@@ -1,0 +1,70 @@
+<button type="button" class="btn btn-outline-success" (click)="addProduct()">Добавить</button>
+
+<button type="button" class="btn btn-outline-secondary ml-3" (click)="loadProduct()">Обновить</button>
+
+
+<table border="0" class=" table table-striped mt-5">
+
+    <thead>
+        <tr>
+            <th> Название </th>
+            <th> Количество </th>
+            <th> Цена </th>
+            <th> Куплено </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products; let i = index">
+            <ng-template [ngTemplateOutlet]='loadTemplate(product)' [ngTemplateOutletContext]="{ $implicit: product}">
+            </ng-template>
+        </tr>
+    </tbody>
+
+</table>
+<p>
+    {{statusMessage}}
+</p>
+
+<!-- <p *ngIf="condition;else unset ">Привет мир</p>
+<ng-template #unset>
+    <p>Пока мир</p>
+</ng-template> -->
+
+<!-- Шаблон для чтения -->
+<ng-template #readOnlyTemplate let-product>
+    <td> {{product.purchase}}</td>
+    <td> {{product.num }} </td>
+    <td>{{ product.price }}</td>
+    <td>
+        <input  type="checkbox" [(ngModel)]="product.done" />
+    </td>
+    <td>
+        <button class="btn btn-outline-secondary" (click)="editProduct(product)">Изменить</button>
+    <td>
+        <button class="btn btn-outline-danger " (click)="deletProduct(product)">Удалить</button>
+    </td>
+</ng-template>
+
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.purchase" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.num" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.price" class="form-control" />
+    </td>
+    <td>
+        <input  type="checkbox" [(ngModel)]="editedProduct.done" />
+    </td>
+    <td>
+        <button class="btn btn-outline-secondary" (click)="saveProduct()">Сохранить</button>
+    <td>
+        <button class="btn btn-outline-danger " (click)="cancel()">Отмена</button>
+    </td>
+</ng-template>

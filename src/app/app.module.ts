@@ -20,12 +20,17 @@ import { Chapter6Module } from './chapter6/chapter6.module';
 
 import { Chapter7Module } from './chapter7-navigation/chapter7.module';
 
+import { PipesModule } from './chapter8-pipes/pipes.module';
+
+
 import { ExampleModule } from './ExampleModule/example.module';
+import { UpmenuDirective } from './upmenu.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    UpmenuDirective,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,8 @@ import { ExampleModule } from './ExampleModule/example.module';
     Chapter6Module,
 
     Chapter7Module,
+
+    PipesModule,
 
     ExampleModule,
 

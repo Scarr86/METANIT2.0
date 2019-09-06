@@ -3,19 +3,36 @@
 <h4>Привязка к сеттеру</h4>
 <div class="d-inline-block border m-3 ">
     <!-- Родительски компонент -->
-    <p> <strong>Родительски компонент</strong> </p>
-    name Child: <strong> {{nameChild}}</strong><br>
-    name <input type="text" [(ngModel)]="name"> <br>
-    age <input type="number" [(ngModel)]="age"> <br>
-    id <input type="number" [(ngModel)]="id"> <br>
-
-    <p>Count click: {{clicks}}</p>
+    <p> <strong>Parent компонент</strong> </p>
+    name parent: <input type="text" [(ngModel)]="name"> <br>
+    age {{name}}: <input type="number" [(ngModel)]="age"> real age: {{realAge}}  <br>
+    id {{name}}: <input type="number" [(ngModel)]="id"> <br>
+    
+    <div class="mt-3  border">
+        <p><strong>From child </strong></p>
+        name Child: <strong> {{nameChild}}</strong><br>
+        
+        <p>Count click: {{clicks}}</p>
+    </div>
 </div>
 
 <div class="d-inline-block border">
     <!-- Встроенный компонент -->
-    <app-child-2 [userName]="name" [userAge]='age' (nameChildChange)="nameChild=$event" [(usrId)]="id"
-        (onChBtn)="onChanged($event)">
+    <!--[userName]="name" односторонняя привязка в дочерний компонент -->
+    <!--[userAge]='age' односторонняя привязка в дочерний компонент  -->
+    <!-- (realUserAge)="realAge=$event" set в дочернем не дает установить больше 100 тут ловим событие -->
+    <!-- сахар - [(userId)]="id" без сахара так -[userId]="id" (userIdChange)="userId=$event" двустроронняя привязка -->
+    <!-- (nameChildChange)="nameChild=$event"  переменная nameChild определенна только в HTML родительского компонента, (nameChildChange) - это событие дочернего компонента    -->
+    <app-child-2 
+    [userName]="name" 
+
+    [userAge]='age' 
+    (realUserAge)="realAge=$event"
+    
+    [(userId)]="id" 
+    (nameChildChange)="nameChild=$event"
+
+    (onChBtn)="onChanged($event)">
 
         <!-- ng-content -->
         <p> <strong>Встроенный компонент</strong> </p>

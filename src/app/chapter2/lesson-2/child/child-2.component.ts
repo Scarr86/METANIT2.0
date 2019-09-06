@@ -9,10 +9,10 @@ import { LogService } from 'src/app/log.service';
 export class Child2Component implements OnInit {
   @Input() userName: string;
 
-  constructor(private logService: LogService){
+  constructor(private logService: LogService) {
   }
 
-/*********************************/
+  /*********************************/
 
   //@Output должен иметь формат Наз.переменной+слово Change -> [nameChild]+[Change]
   //Это если нехотим отдельно обрабатывать событие в родительском компоненте
@@ -24,41 +24,49 @@ export class Child2Component implements OnInit {
   @Input() nameChild = "Петр";
   @Output() nameChildChange = new EventEmitter<string>();
   onNameChildCh(newName: string) {
-      this.nameChild = newName;
-      this.nameChildChange.emit(newName);
-      console.log(newName);
+    this.nameChild = newName;
+    this.nameChildChange.emit(newName);
+    console.log(newName);
   }
   ngOnInit() {
-      this.nameChildChange.emit(this.nameChild);
+    this.nameChildChange.emit(this.nameChild);
   }
-/********************************************************* */
+  /********************************************************* */
   _userAge: number;
   @Input()
   set userAge(age: number) {
-      if (age < 0)
-          this._userAge = 0;
-      else if (age > 100)
-          this._userAge = 100;
-      else
-          this._userAge = age;
+    if (age < 0)
+      this._userAge = 0;
+    else if (age > 100)
+      this._userAge = 100;
+    else
+      this._userAge = age;
+    this.realUserAge.emit(this.userAge);
   }
+
   get userAge(): number { return this._userAge; }
-/********************************************************* */
- 
+
+  @Output() realUserAge = new EventEmitter<number>();
+
+
+
+
+  /********************************************************* */
+
   // @Input('uId') userId: number;
-  @Input() usrId: number;
-  @Output() usrIdChange = new EventEmitter<number>();
+  @Input() userId: number;
+  @Output() userIdChange = new EventEmitter<number>();
   onIdCh(id: number) {
-      this.usrId = id;
-      this.usrIdChange.emit(id);
-      console.log("emit", this.usrId);
+    this.userId = id;
+    this.userIdChange.emit(id);
+    console.log("emit", this.userId);
   }
-/********************************************************* */
+  /********************************************************* */
 
   @Output() onChBtn = new EventEmitter<boolean>();
   change(inc: any) {
-      console.log("emit", inc);
-      this.onChBtn.emit(inc);
+    console.log("emit", inc);
+    this.onChBtn.emit(inc);
   }
 
 

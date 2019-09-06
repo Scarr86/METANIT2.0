@@ -1,18 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { Chapter1Module } from './chapter-1/chapter1.module';
-
-
-import { Chapter2Module } from './chapter2/chapter2.module';
-
-import { Chapter3Module } from './chapter3/chapter3.module';
-
-import { Chapter4Module } from './chapter4/chapter4.module';
-
-import { Chapter5Module } from './ch5-Forms/chapter5.module';
-
-import { Chapter6Module } from './chapter6/chapter6.module';
 import { Chapter1Component } from './chapter-1/chapter1.component';
 import { Chapter2Component } from './chapter2/chapter2.component';
 import { Chapter3Component } from './chapter3/chapter3.component';
@@ -24,6 +11,11 @@ import { ExampleUsersComp } from './ExampleModule/ExampleUsers/example-users.com
 import { ItemComponent } from './chapter7-navigation/lesson-1/item.component';
 import { ItemStatComponent } from './chapter7-navigation/lesson-2/ItemStat/item.stat.component';
 import { ItemDetailsComponent } from './chapter7-navigation/lesson-2/ItemDetails/item.details.component';
+import { AboutComponent } from './chapter7-navigation/lessom-3-guards/about.component';
+import { AboutGuard } from './chapter7-navigation/lessom-3-guards/about.guard';
+import { ExitAboutGuard } from './chapter7-navigation/lessom-3-guards/exit.about.guard';
+import { PipesComponent } from './chapter8-pipes/pipes.comp';
+import { ProductListComp } from './ExampleModule/ProductList/product-list.comp';
 // определение дочерних маршрутов для урока
 const itemRoutes = [
   { path: 'stat', component: ItemStatComponent },
@@ -44,7 +36,7 @@ const appRouter: Routes = [
 
   { path: "chapter7", component: Chapter7Component },
   //Если разкоментить компонет будет рядом появлятся
-   //{path:"chapter7", component: Chapter7Component, children: childRoutes },
+  //  {path:"chapter7", component: Chapter7Component, children: childRoutes },
   //пример маршрутизации из рут 
   // {path:"chapter7/item/:id", component: ItemComponent },
   //пример маршрутизации child так не нужно делать 
@@ -53,8 +45,19 @@ const appRouter: Routes = [
   // {path:"chapter7/item/:id/details", component: ItemDetailsComponent },
   //нужно так. для дочерней маршрутизации
   { path: "chapter7/item/:id", component: ItemComponent, children: itemRoutes },
+  
+  //Guard
+  {
+    path: "chapter7/about",
+    component: AboutComponent,
+    canActivate: [AboutGuard],
+    canDeactivate: [ExitAboutGuard]
+  },
+  
+  { path: 'pipes', component: PipesComponent},
 
-  { path: "myexample", component: ExampleUsersComp },
+  // { path: "myexample", component: ExampleUsersComp },
+  { path: "myexample", component: ProductListComp },
   { path: "example", redirectTo: 'myexample', pathMatch: 'full' },
   { path: "**", redirectTo: '' },
 ]
@@ -62,16 +65,9 @@ const appRouter: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    // CommonModule,
     RouterModule.forRoot(appRouter),
-    // RouterModule.forChild(childRoutes),
-    // Chapter1Module,
-    // Chapter2Module,
-    // Chapter3Module,
-    // Chapter4Module,
-    // Chapter5Module,
-    // Chapter6Module
   ],
+  providers: [AboutGuard, ExitAboutGuard],
   exports: [RouterModule]
 })
 export class MetanitRoutingModule { }

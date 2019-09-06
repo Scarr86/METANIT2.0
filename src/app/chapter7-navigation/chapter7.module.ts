@@ -10,6 +10,9 @@ import { MetanitRoutingModule } from '../metanit-routing.module';
 import { ItemDetailsComponent } from './lesson-2/ItemDetails/item.details.component';
 import { ItemStatComponent } from './lesson-2/ItemStat/item.stat.component';
 
+import { AboutComponent } from './lessom-3-guards/about.component';
+
+
 
 
 
@@ -22,6 +25,7 @@ import { ItemStatComponent } from './lesson-2/ItemStat/item.stat.component';
     ItemComponent,
     ItemDetailsComponent,
     ItemStatComponent,
+    AboutComponent
 
    ],
   exports: [ Chapter7Component  ],
