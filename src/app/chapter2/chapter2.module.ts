@@ -18,9 +18,17 @@ import { Child4Component } from './lesson-4/child/child-4.component';
 
 
 import { GeoModule } from './lesson-5/geo.module';
+import { MetanitRoutingModule } from '../metanit-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+
+
 
 @NgModule({
-  imports: [  CommonModule, FormsModule, GeoModule ],
+  imports: [  CommonModule, 
+    FormsModule, 
+    GeoModule,
+    MetanitRoutingModule,
+   ],
   declarations: [
     Chapter2Component,
     Parent1Component,
@@ -34,6 +42,7 @@ import { GeoModule } from './lesson-5/geo.module';
 
     Parent4Component,
     Child4Component,
+
 
 
    ],
