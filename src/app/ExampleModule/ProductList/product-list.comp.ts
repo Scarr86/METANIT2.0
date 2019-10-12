@@ -1,21 +1,20 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
-import { Product } from './product';
-import { ProductService } from './product.service';
+import { Component, ViewChild, TemplateRef } from "@angular/core";
+import { Product } from "./product";
+import { ProductService } from "./product.service";
 
 @Component({
-    selector: 'app-product-list',
-    templateUrl: './product-list.comp.html',
-    styleUrls: ['./product-list.comp.css']
+    selector: "app-product-list",
+    templateUrl: "./product-list.comp.html",
+    styleUrls: ["./product-list.comp.css"]
 })
 export class ProductListComp {
-
     //тип шаблонов
-    @ViewChild('readOnlyTemplate', { static: false }) readOnlyTemplate: TemplateRef<any>;
-    @ViewChild('editTemplate', { static: false }) editTemplate: TemplateRef<any>;
+    @ViewChild("readOnlyTemplate", { static: false })
+    readOnlyTemplate: TemplateRef<any>;
+    @ViewChild("editTemplate", { static: false }) editTemplate: TemplateRef<any>;
 
-
-    products: Product[];
-    editedProduct: Product;// = new Product(1, "",1,111,false);
+    products: Product[] = [];
+    editedProduct: Product; // = new Product(1, "",1,111,false);
     isNewRecord: boolean;
     statusMessage: string = "";
     constructor(private productService: ProductService) { }
@@ -25,12 +24,11 @@ export class ProductListComp {
     }
 
     loadProduct() {
-        
-        //this.statusMessage = ""; 
-         
+        //this.statusMessage = "";
+
         this.productService.getProducts().subscribe(
-            (products: Product[]) => { 
-                this.products = products; 
+            (products: Product[]) => {
+                this.products = products;
             },
             (err: Error) => {
                 console.log(err.message);
@@ -40,27 +38,25 @@ export class ProductListComp {
     }
 
     deletProduct(p: Product) {
-
         this.productService.deleteProduct(p.id).subscribe(
-            d => {
+            () => {
                 this.statusMessage = "Успешно удаленны";
                 this.loadProduct();
             },
             (err: Error) => {
-                this.statusMessage = "Ошибка1: " + err.message
-            });
+                this.statusMessage = "Ошибка1: " + err.message;
+            }
+        );
 
         let prod = this.products.find((prod: Product, idx: number) => {
-            if (p.id === prod.id)
-                return true;
-            else
-                return false;
+            if (p.id === prod.id) return true;
+            else return false;
         });
         this.products.splice(prod.id, 1);
         this.products.forEach((p, id) => {
             p.id = id;
         });
-        // console.log(this.products);   
+        // console.log(this.products);
     }
 
     editProduct(p: Product) {
@@ -88,16 +84,14 @@ export class ProductListComp {
             console.log("add");
 
             this.productService.createProduct(this.editedProduct).subscribe(
-                (d) => {
-                    console.log(
-                        JSON.stringify(this.editedProduct, null, 2)
-                    );
+                d => {
+                    console.log(JSON.stringify(this.editedProduct, null, 2));
 
                     this.statusMessage = "Данные успешно добавлены";
-                    this.loadProduct();                    
+                    this.loadProduct();
                 },
                 (err: Error) => {
-                    this.products.pop();
+                    //this.products.pop();
                     this.statusMessage = "Ошибка2: " + err.message;
                 },
                 () => {
@@ -107,10 +101,9 @@ export class ProductListComp {
             //this.products.push(this.editedProduct);
             this.isNewRecord = false;
             this.editedProduct = null;
-        }
-        else {
+        } else {
             this.productService.updateProduct(this.editedProduct.id, this.editedProduct).subscribe(
-                d => {
+                () => {
                     this.statusMessage = "Данные обновленны";
                     this.loadProduct();
                 },
@@ -140,5 +133,4 @@ export class ProductListComp {
         }
         this.editedProduct = null;
     }
-
 }

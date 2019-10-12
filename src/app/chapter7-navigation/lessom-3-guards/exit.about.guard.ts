@@ -8,11 +8,7 @@ export interface ComponentCanDeactivate {
 export class ExitAboutGuard implements CanDeactivate<ComponentCanDeactivate>{
 
     canDeactivate(component: ComponentCanDeactivate): Observable<boolean> | boolean {
-
         // return component.notExit() ;
-
-
-        
         return component.notExit ? component.notExit() : true; // если функция реализованна то вызываем ее
     }
 }

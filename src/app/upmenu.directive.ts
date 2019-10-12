@@ -13,7 +13,7 @@ export class UpmenuDirective {
 
   constructor(private el: ElementRef, private rederer: Renderer2) {
     let  onScroll = () => {
-      if (window.innerWidth > 767)
+      if (window.innerWidth > 991)
         this._marginTop = window.pageYOffset;
       else
         this._marginTop = 0;

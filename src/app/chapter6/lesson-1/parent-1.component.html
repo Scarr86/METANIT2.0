@@ -1,36 +1,34 @@
-<div class="border">
-        <h5> Через компонент простой user.json </h5>
-        <div >
-            <label>Name</label>
-            <input type='text' [value]="user?.name" class="form-control mb-3"/>
-            <label>Age</label>
-            <input type='text' [value]="user?.age" class="form-control"/>
-        </div>
-        <hr>
-
-
-        <h5> Через сервис массив данных user<strong>s</strong>.json </h5>
-        <div *ngFor="let user of users; index as i">
-            <p>{{i}}</p>
-            <label>Name</label>
-            <input type='text' [value]="user?.name" class="form-control mb-3"/>
-            <label>Age</label>
-            <input type='text' [value]="user?.age" class="form-control"/>
-        </div>
-        
-        <hr>
-
-        <h5> Объект Observable и библиотека RxJS </h5>
-        <p>User Num: {{userNum}} </p>
-        <p>Type: {{userType}} </p>
-        <div *ngFor="let user of users; index as i">
-            <label>{{i}} Name</label>
-            <input type='text' [value]="user?.name" class="form-control mb-3"/>
-            <label>Age</label>
-            <input type='text' [value]="user?.age" class="form-control"/>
-        </div>
-        <button (click)="getUsersWhithError()" class="btn btn-info">getUsersWhithError()</button>
-        <hr>
-        <p>Number: {{num}}<p>
-        <button (click)="getNumber()" class="btn btn-info">getNumber()</button>
+<h5> Через компонент простой user.json </h5>
+<div>
+    <label>Name</label>
+    <input type='text' [value]="user?.name" class="form-control mb-3" />
+    <label>Age</label>
+    <input type='text' [value]="user?.age" class="form-control" />
 </div>
+<hr>
+
+
+<h5> Через сервис массив данных user<strong>s</strong>.json </h5>
+<div *ngFor="let user of users; index as i">
+    <p>{{i}}</p>
+    <label>Name</label>
+    <input type='text' [value]="user?.name" class="form-control mb-3" />
+    <label>Age</label>
+    <input type='text' [value]="user?.age" class="form-control" />
+</div>
+
+<hr>
+
+<h5> Объект Observable и библиотека RxJS </h5>
+<p>User Num: {{userNum}} </p>
+<p>Type: {{userType}} </p>
+<div *ngFor="let user of users; index as i">
+    <label>{{i}} Name</label>
+    <input type='text' [value]="user?.name" class="form-control mb-3" />
+    <label>Age</label>
+    <input type='text' [value]="user?.age" class="form-control" />
+</div>
+<button (click)="getUsersWhithError()" class="btn btn-info">getUsersWhithError()</button>
+<hr>
+<p>Number: {{num}}<p>
+        <button (click)="getNumber()" class="btn btn-info">getNumber()</button>

@@ -6,7 +6,7 @@ import { Chapter3Component } from './chapter3/chapter3.component';
 import { Chapter4Component } from './chapter4/chapter4.component';
 import { Chapter5Component } from './ch5-Forms/chapter5.component';
 import { Chapter6Component } from './chapter6/chapter6.component';
-import { Chapter7Component } from './chapter7-navigation/chapter7.component';
+import { Chapter7Component, Item } from './chapter7-navigation/chapter7.component';
 import { ExampleUsersComp } from './ExampleModule/ExampleUsers/example-users.comp';
 import { ItemComponent } from './chapter7-navigation/lesson-1/item.component';
 import { ItemStatComponent } from './chapter7-navigation/lesson-2/ItemStat/item.stat.component';
@@ -23,16 +23,14 @@ import { Parent2Component } from './chapter2/lesson-2/parent-2.component';
 import { Parent3Component } from './chapter2/lesson-3/parent-3.component';
 import { Parent4Component } from './chapter2/lesson-4/parent-4.component';
 import { GeoComponent } from './chapter2/lesson-5/geo.component';
+import { HomePageComponent } from './ExampleModule/ExampleUsers/home-page/home-page.component';
+import { SetupPageComponent } from './ExampleModule/ExampleUsers/setup-page/setup-page.component';
 // определение дочерних маршрутов для урока
 const itemRoutes = [
   { path: 'stat', component: ItemStatComponent },
   { path: 'details', component: ItemDetailsComponent },
 ]
-// определение дочерних маршрутов для моей навигации по всем урокам метанит
-const childRoutes = [
-  { path: 'item/:id', 
-  component: ItemComponent, children: itemRoutes }
-]
+
 const ch2Lesson:Routes=[
   {path: "lesson1", component: Parent1Component},
   {path: "lesson2", component: Parent2Component},
@@ -41,6 +39,15 @@ const ch2Lesson:Routes=[
   {path: "lesson5", component: GeoComponent},
 ]
 
+const exampleRoutes:Routes =[
+  {path:'' , component: HomePageComponent},
+  {path:'setup', component: SetupPageComponent}
+]
+
+
+// const ch7Lesson:Routes=[
+//   {path: "item/:id", component:ItemComponent},
+// ]
 
 
 const appRouter: Routes = [
@@ -51,12 +58,9 @@ const appRouter: Routes = [
   { path: "chapter4", component: Chapter4Component },
   { path: "chapter5", component: Chapter5Component },
   { path: "chapter6", component: Chapter6Component },
-
-  { path: "chapter7", component: Chapter7Component },
-  //Если разкоментить компонет будет рядом появлятся
-  //  {path:"chapter7", component: Chapter7Component, children: childRoutes },
-  //пример маршрутизации из рут 
-  // {path:"chapter7/item/:id", component: ItemComponent },
+  
+//Если разкоментить компонет будет рядом появлятся
+  { path: "chapter7", component: Chapter7Component,/* children: ch7Lesson */},
   //пример маршрутизации child так не нужно делать 
   // используем дочернию маршрутизацию
   // {path:"chapter7/item/:id/stat", component: ItemStatComponent },
@@ -73,9 +77,9 @@ const appRouter: Routes = [
   },
   
   { path: 'pipes', component: PipesComponent},
-
-  // { path: "myexample", component: ExampleUsersComp },
-  { path: "myexample", component: ProductListComp },
+  
+  { path: "exampleUsers", component: ExampleUsersComp, children:  exampleRoutes},
+  { path: "exampleProductList", component: ProductListComp },
   { path: "example", redirectTo: 'myexample', pathMatch: 'full' },
   { path: "**", redirectTo: '' },
 ]

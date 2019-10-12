@@ -23,17 +23,23 @@ export class ItemComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute, private router: Router, private logService: LogService) {
   }
 
- 
+
   ngOnInit() {
     //Отслеживание параметров запроса из routerLink
     //или так
     // this.id = activeRoute.snapshot.params["id"];//Не обновляется динамически
     //или так
-     this.subscription = this.activeRoute.params.subscribe(params=>{
+    this.subscription = this.activeRoute.params.subscribe(params => {
       console.log(params);
-      
-     this.item.id = params["id"]
+
+      this.item.id = params["id"]
     });
+    //Отслеживание дополнительных запросов routerLink
+    this.querySubscription = this.activeRoute.queryParams.subscribe(
+      (queryParam: any) => {
+        this.item.product = queryParam['product'];
+        this.item.price = queryParam['price'];
+      });
     //или так
     // this.activeRoute.paramMap
     //   .pipe(
@@ -47,7 +53,7 @@ export class ItemComponent implements OnInit {
     //   .subscribe(data => {
     //     alert(+data);
     //     this.item.id = +data
-        
+
     //   });
     // Так тоже работает но хз правильно ?
     // map( data => {
@@ -56,15 +62,10 @@ export class ItemComponent implements OnInit {
     //   return data['params']['id'];
     // })
 
-    //Отслеживание дополнительных запросов routerLink
-    this.querySubscription = this.activeRoute.queryParams.subscribe(
-      (queryParam: any) => {
-        this.item.product = queryParam['product'];
-        this.item.price = queryParam['price'];
-      });
+
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['/chapter7']);
   }
 }

@@ -12,3 +12,6 @@
 .card{
     max-height: 480px;
 }
+.card-text{
+    min-height: 130px;
+}

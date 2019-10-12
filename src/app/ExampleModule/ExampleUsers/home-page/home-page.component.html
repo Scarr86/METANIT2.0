@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col col-6">
+    <!-- Search form -->
+    <input
+      [(ngModel)]="searchStr"
+      class="form-control"
+      placeholder="Поиск по имени"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let u of users | search: searchStr" class="col col-xl-4 ">
+    <example-card-user [user]="u"></example-card-user>
+  </div>
+</div>
