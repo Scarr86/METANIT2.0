@@ -10,4 +10,30 @@ header, footer{
 
 .active a{
     color: tomato;
+    position: relative;
 }
+.row{
+    display: flex;
+}
+.row>div:first-child{
+    flex-basis: 400px;
+}
+nav {
+    /* position: fixed; */
+    /* max-width: 250px; */
+}
+
+
+@media screen and (min-width: 1200px){
+    nav{
+        position: fixed;
+        max-width: 200px;
+    }
+
+}
+
+/* @media screen and (min-width: 900px) {
+    article {
+      padding: 1rem 3rem;
+    }
+  } */

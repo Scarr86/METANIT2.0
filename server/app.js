@@ -27,44 +27,46 @@ const express = require("express");
 const cors = require("cors");
 
 
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 
 const app = express();
 
 app.use(cors());
 // создаем парсер для данных application/x-www-form-urlencoded
-const urlencodedParser = bodyParser.urlencoded({extended: false});
+//const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 app.get("/", function(req, res, next){
+    // console.log(req);
     // res.sendStatus(404);
     res.json(product);
+    res.end();
 });
 
-app.get("/register", urlencodedParser, function (request, response) {
-    response.sendFile(__dirname + "/register.html");
-});
+// app.get("/register", urlencodedParser, function (request, response) {
+//     response.sendFile(__dirname + "/register.html");
+// });
 
-app.post("/register", urlencodedParser, function (request, response) {
-    if(!request.body) return response.sendStatus(400);
-    console.log(request.body);
-    response.send(`${request.body.userName} - ${request.body.userAge}`);
-});
+// app.post("/register", urlencodedParser, function (request, response) {
+//     if(!request.body) return response.sendStatus(400);
+//     console.log(request.body);
+//     response.send(`${request.body.userName} - ${request.body.userAge}`);
+// });
 
 // app.put('/');
-app.post('/', urlencodedParser, function(req, res, next){
-    // if(!req.body) {
-    //    // return res.sendStatus(400);
-    // }else{
-    //     console.log(req.body.num);
-    // }
-    console.log(req);
-    if(! req.body) {
-       return res.sendStatus(400);
-    }
+// app.post('/', urlencodedParser, function(req, res, next){
+//     // if(!req.body) {
+//     //    // return res.sendStatus(400);
+//     // }else{
+//     //     console.log(req.body.num);
+//     // }
+//     console.log(req);
+//     if(! req.body) {
+//        return res.sendStatus(400);
+//     }
 
-    //console.log(req);
-    //res.end();
-});
+//     //console.log(req);
+//     //res.end();
+// });
 // app.delete();
 
 app.listen(3000,"127.0.0.1", ()=>{

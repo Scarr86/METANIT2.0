@@ -8,23 +8,25 @@ import { Directive, HostBinding, Renderer2, ElementRef } from '@angular/core';
 })
 export class UpmenuDirective {
 
-  private _marginTop: number = 0;
+  private top: number = 0;
 
 
   constructor(private el: ElementRef, private rederer: Renderer2) {
     let  onScroll = () => {
       if (window.innerWidth > 767)
-        this._marginTop = window.pageYOffset;
+        this.top = window.pageYOffset;
       else
-        this._marginTop = 0;
+        this.top = 0;
     }
     window.addEventListener('scroll', onScroll);
   }
+  @HostBinding("style.position") get position(){
+    return "relative"
+  }
 
-
-  @HostBinding("style.margin-top")
+  @HostBinding("style.top")
   get marginTop() {
-    return (this._marginTop + 'px');
+    return (this.top + 'px');
   }
 
   onMouseEnter() {

@@ -7,28 +7,43 @@ import { ExampleUsersComp } from './ExampleUsers/example-users.comp';
 import { ExampleCardUserComp } from './ExampleUsers/ExampleCardUser/example-card-user.comp'
 import { HoverDirective } from './ExampleUsers/ExampleCardUser/example-hover.directive';
 
-import { GoogleDriveComp } from './GoogleDrive/google-drive.comp';
 import { ProductListComp } from './ProductList/product-list.comp';
 
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from './ExampleUsers/search.pipe';
+import { HomePageComponent } from './ExampleUsers/home-page/home-page.component';
+import { SetupPageComponent } from './ExampleUsers/setup-page/setup-page.component';
+import { Routes, RouterModule } from '@angular/router';
+import { MetanitRoutingModule } from '../metanit-routing.module';
 
+// const routes: Routes = [
+//   { path: "exampleUsers", component: ExampleUsersComp },
+// ]
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule, CommonModule],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        CommonModule,
+        MetanitRoutingModule,
+        // RouterModule.forChild(routes)
+    ],
     declarations: [
-        ExampleUsersComp, 
-        ExampleCardUserComp, 
-        HoverDirective, 
-
-        GoogleDriveComp,
-
+        ExampleUsersComp,
+        ExampleCardUserComp,
+        HoverDirective,
         ProductListComp,
+        SearchPipe,
+        HomePageComponent,
+        SetupPageComponent,
     ],
     exports: [
         ExampleUsersComp,
-        
+
         ProductListComp,
+        // RouterModule
     ],       // экспортируем компонент
 })
 export class ExampleModule { }

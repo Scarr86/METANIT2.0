@@ -1,45 +1,47 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header></header>
 
-<div   class="container-fluid">
+<div class="container-fluid">
   <div class="row">
-    <div  class="col-12 col-md-4 col-sm-12 ">
-
-        <nav appUpmenu>
-          <ol>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-              <a routerLink=''>Введение в Angular 8</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter2'>Основы Angular</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter3'>Директивы</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter4'>Сервисы и dependency injection</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter5'>Работа с формами
-                Модуль FormsModule и директива NgModel</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter6'>HTTP и взаимодействие с сервером
-                HttpClient и отправка запросов </a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/chapter7'>Маршрутизация</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/pipes'>Pipes </a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink='/myexample'>Мои примеры </a>
-            </li>
-  
-          </ol>
-        </nav>
-
+    <div class=" col-12 col-md-4 col-sm-12 ">
+      <nav appUpmenu>
+        <ol>
+          <li
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a routerLink="">Введение в Angular 8</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter2">Основы Angular</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter3">Директивы</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter4">Сервисы и dependency injection</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter5"
+              >Работа с формами Модуль FormsModule и директива NgModel</a
+            >
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter6"
+              >HTTP и взаимодействие с сервером HttpClient и отправка запросов
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/chapter7">Маршрутизация</a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/pipes">Pipes </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/myexample">Мои примеры </a>
+          </li>
+        </ol>
+      </nav>
     </div>
     <div class="col col-md-8 ">
       <router-outlet></router-outlet>
@@ -48,3 +50,19 @@
 </div>
 
 <footer></footer>
+
+<ul>
+  <li
+    routerLink="/myexample"
+    routerLinkActive="active"
+    routerLink="/myexample"
+    routerLink="/myexample"
+  >
+    item1
+  </li>
+  <li>item2</li>
+  <li>item3</li>
+  <li>item4</li>
+  <li>item5</li>
+  <li>item6</li>
+</ul>

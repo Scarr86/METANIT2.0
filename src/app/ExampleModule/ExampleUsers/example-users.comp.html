@@ -1,19 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Приложение</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" a ria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a   [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" routerLink='/exampleUsers' class="nav-item nav-link">Главная </a>
+      <a routerLinkActive="active" routerLink='/exampleUsers/setup' class="nav-item nav-link">Настройки</a>
+    </div>
+  </div>
+
+</nav>
+
+
 <div class="container mt-5">
-    <h3>Мои примеры с Users</h3>
-
-    <div class="form-inline mb-5 ">
-        <div class="form-group mr-3">
-            <label>Кольчество юзеров</label>
-            <input type="number" class="form-control" [(ngModel)]="numUser" />
-        </div>
-        <button class="btn btn-info" (click)="getUsers(numUser)">Get Users</button>
-    </div>
-
-
-
-    <div class="row flex-wrap justify-content-start">
-        <div *ngFor='let u of users' class="col col-md-3 ">
-            <example-card-user [user]='u'></example-card-user>
-        </div>
-    </div>
+  <router-outlet></router-outlet>
 </div>

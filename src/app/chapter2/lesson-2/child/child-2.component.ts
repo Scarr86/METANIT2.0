@@ -33,20 +33,20 @@ export class Child2Component implements OnInit {
   }
   /********************************************************* */
   _userAge: number;
+  @Output() realUserAge = new EventEmitter<number>();
   @Input()
   set userAge(age: number) {
     if (age < 0)
-      this._userAge = 0;
+    this._userAge = 0;
     else if (age > 100)
-      this._userAge = 100;
+    this._userAge = 100;
     else
-      this._userAge = age;
+    this._userAge = age;
     this.realUserAge.emit(this.userAge);
   }
-
+  
   get userAge(): number { return this._userAge; }
 
-  @Output() realUserAge = new EventEmitter<number>();
 
 
 

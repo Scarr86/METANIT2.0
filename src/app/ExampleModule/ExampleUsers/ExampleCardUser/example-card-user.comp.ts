@@ -14,4 +14,7 @@ export class ExampleCardUserComp {
     onClick(){
         this.isMarked = true;
     }
+    ngInit(){
+        
+    }
 }
