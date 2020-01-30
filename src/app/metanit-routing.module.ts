@@ -55,6 +55,12 @@ const exampleRoutes: Routes = [
 //   {path: "item/:id", component:ItemComponent},
 // ]
 
+
+// const ch7Lesson:Routes=[
+//   {path: "item/:id", component:ItemComponent},
+// ]
+
+
 const appRouter: Routes = [
   { path: "", component: Chapter1Component },
   { path: "chapter2", component: Chapter2Component, children: ch2Lesson },
