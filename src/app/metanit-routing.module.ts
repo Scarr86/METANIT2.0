@@ -95,14 +95,12 @@ const appRouter: Routes = [
   },
 
   { path: "pipes", component: PipesComponent },
-
   {
     path: "exampleUsers",
     component: ExampleUsersComp,
     children: exampleRoutes
   },
   { path: "exampleProductList", component: ProductListComp },
-  { path: "example", redirectTo: "myexample", pathMatch: "full" },
   { path: "**", redirectTo: "" }
 ];
 

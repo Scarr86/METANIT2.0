@@ -12,12 +12,12 @@ header, footer{
     color: tomato;
     position: relative;
 }
-.row{
+/* .row{
     display: flex;
 }
 .row>div:first-child{
     flex-basis: 400px;
-}
+} */
 nav {
     /* position: fixed; */
     /* max-width: 250px; */

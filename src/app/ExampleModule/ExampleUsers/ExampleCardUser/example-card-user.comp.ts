@@ -12,7 +12,7 @@ export class ExampleCardUserComp {
     isMarked:boolean = false;
 
     onClick(){
-        this.isMarked = true;
+        this.isMarked = !this.isMarked;
     }
     ngInit(){
         
