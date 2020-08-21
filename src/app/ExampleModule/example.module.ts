@@ -7,7 +7,7 @@ import { ExampleUsersComp } from './ExampleUsers/example-users.comp';
 import { ExampleCardUserComp } from './ExampleUsers/ExampleCardUser/example-card-user.comp'
 import { HoverDirective } from './ExampleUsers/ExampleCardUser/example-hover.directive';
 
-import { ProductListComp } from './ProductList/product-list.comp';
+import { ProductListComp, EditProdDirective } from './ProductList/product-list.comp';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from './ExampleUsers/search.pipe';
@@ -38,6 +38,7 @@ import { MetanitRoutingModule } from '../metanit-routing.module';
         SearchPipe,
         HomePageComponent,
         SetupPageComponent,
+        EditProdDirective
     ],
     exports: [
         ExampleUsersComp,

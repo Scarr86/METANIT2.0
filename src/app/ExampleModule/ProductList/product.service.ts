@@ -6,15 +6,15 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class ProductService {
-  // private url = '/assets/products.json';
-  private url = "http://localhost:3000";
+  private url = "/assets/products.json";
+  // private url = "http://localhost:3000";
 
   constructor(private http: HttpClient) {}
   getProducts(): Observable<any> {
     return this.http.get(this.url).pipe(
-      tap(res => console.log(res)),
-      map((productList: Array<any>) => {
-        return productList["productList"].map(p => {
+      tap((res) => console.log(res)),
+      map<{ productList: any[] }, any>(({ productList }) => {
+        return productList.map((p) => {
           let product: Product = new Product(
             p.id,
             p.name,

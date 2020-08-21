@@ -17,8 +17,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let product of products; let i = index">
-            <ng-template [ngTemplateOutlet]='loadTemplate(product)' [ngTemplateOutletContext]="{ $implicit: product}">
-            </ng-template>
+            <!-- <ng-template [ngTemplateOutlet]='loadTemplate(product)' [ngTemplateOutletContext]="{ $implicit: product}">
+            </ng-template> -->
+            <ng-container *ngTemplateOutlet="loadTemplate(product); context: { $implicit: product}"></ng-container>
+            
+
         </tr>
     </tbody>
 
@@ -26,6 +29,7 @@
 <p>
     {{statusMessage}}
 </p>
+<!-- <input type="checkbox"> -->
 
 <!-- <p *ngIf="condition;else unset ">Привет мир</p>
 <ng-template #unset>
@@ -49,7 +53,8 @@
 
 
 <!--шаблон для редактирования-->
-<ng-template #editTemplate>
+<!-- передаеьмя переменная prod но не используется изменяет в основном массиве ( не будет работать отмена операции) -->
+<ng-container *editProd="let prod">
     <td>
         <input type="text" [(ngModel)]="editedProduct.purchase" class="form-control" />
     </td>
@@ -67,4 +72,24 @@
     <td>
         <button class="btn btn-outline-danger " (click)="cancel()">Отмена</button>
     </td>
-</ng-template>
+</ng-container>
+<!-- OR -->
+<!-- <ng-template #editTemplate>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.purchase" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.num" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.price" class="form-control" />
+    </td>
+    <td>
+        <input  type="checkbox" [(ngModel)]="editedProduct.done" />
+    </td>
+    <td>
+        <button class="btn btn-outline-secondary" (click)="saveProduct()">Сохранить</button>
+    <td>
+        <button class="btn btn-outline-danger " (click)="cancel()">Отмена</button>
+    </td>
+</ng-template> -->

@@ -2,6 +2,17 @@ import { Component, ViewChild, TemplateRef } from "@angular/core";
 import { Product } from "./product";
 import { ProductService } from "./product.service";
 
+import { Directive } from '@angular/core';
+
+@Directive({
+    selector: '[editProd]',
+})
+export class EditProdDirective {
+    constructor(ref: TemplateRef<any>){
+        console.log(ref)
+    }
+ }
+
 @Component({
     selector: "app-product-list",
     templateUrl: "./product-list.comp.html",
@@ -11,7 +22,7 @@ export class ProductListComp {
     //тип шаблонов
     @ViewChild("readOnlyTemplate", { static: false })
     readOnlyTemplate: TemplateRef<any>;
-    @ViewChild("editTemplate", { static: false }) editTemplate: TemplateRef<any>;
+    @ViewChild(EditProdDirective , { static: false, read:TemplateRef}) editTemplate: TemplateRef<any>;
 
     products: Product[] = [];
     editedProduct: Product; // = new Product(1, "",1,111,false);
@@ -61,9 +72,7 @@ export class ProductListComp {
     }
 
     editProduct(p: Product) {
-        console.log(p);
         this.editedProduct = new Product(p.id, p.purchase, p.num, p.price, p.done);
-        // console.log(this.editedProduct);
     }
 
     loadTemplate(product: Product) {
@@ -112,17 +121,10 @@ export class ProductListComp {
                     this.statusMessage = "Ошибка3: " + err.message;
                 }
             );
-
-            this.products.forEach(p => {
-                if (p.id == this.editedProduct.id) {
-                    p.done = this.editedProduct.done;
-                    p.num = this.editedProduct.num;
-                    p.price = this.editedProduct.price;
-                    p.purchase = this.editedProduct.purchase;
-                }
-            });
-            this.editProduct = null;
-            console.log(this.products);
+            let ind = this.products.findIndex(p=> p.id === this.editedProduct.id);
+            this.products.splice(ind, 1, this.editedProduct)
+            this.editedProduct = null;
+            console.log("update: ", this.products);
         }
         this.editedProduct = null;
     }
